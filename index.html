@@ -3,38 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Retro Snake Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="bg-glow"></div>
     <main>
       <section>
-        <div class="infos">
-          <div class="info">
-            <h3>
-              High Score:
-              <span id="high-score">0</span>
-            </h3>
+        <!-- Header / Stats Bar -->
+        <header class="infos">
+          <div class="info info-high-score">
+            <span class="info-label">🏆 High Score</span>
+            <span class="info-value" id="high-score">0</span>
           </div>
-          <div class="info">
-            <h3>
-              Score:
-              <span id="score">0</span>
-            </h3>
+          <div class="info info-score">
+            <span class="info-label">🎯 Score</span>
+            <span class="info-value" id="score">0</span>
           </div>
-          <div class="info">
-            <h3>
-              Time:
-              <span id="time">0:00</span>
-            </h3>
+          <div class="info info-time">
+            <span class="info-label">⏱️ Time</span>
+            <span class="info-value" id="time">0:00</span>
           </div>
+        </header>
+
+        <!-- Game Board -->
+        <div class="board-wrapper">
+          <div class="board"></div>
         </div>
-        <div class="board">
-         
-        </div>
+
+        <!-- Controls Footer -->
+        <footer class="controls-bar">
+          <button class="btn pause-button">
+            <span class="btn-icon">⏸</span>
+            <span class="btn-text">Pause</span>
+          </button>
+          <div class="hint">Use <strong>Arrow Keys</strong> to move &bull; <strong>Space</strong> to pause</div>
+        </footer>
       </section>
+
+      <!-- Multi-state Modal Overlay -->
+      <div class="modal">
+        <!-- Start Game Screen -->
+        <div class="modal-card start-game">
+          <div class="modal-badge">Arcade Edition</div>
+          <h2 class="modal-title">Retro Snake</h2>
+          <p class="modal-desc">
+            Navigate the grid, collect the glowing orbs, and grow without crashing into the walls or yourself.
+          </p>
+          <button class="btn btn-primary btn-start">
+            <span>Start Game</span>
+            <span class="btn-arrow">➔</span>
+          </button>
+        </div>
+
+        <!-- Game Paused Screen -->
+        <div class="modal-card pause-game">
+          <div class="modal-badge badge-pause">Paused</div>
+          <h2 class="modal-title">Game Paused</h2>
+          <div class="modal-stats">
+            <div class="stat-box">
+              <span class="stat-label">Score</span>
+              <span class="stat-val" id="pause-score">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Time</span>
+              <span class="stat-val" id="pause-time">0:00</span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-resume">
+            <span>Resume Game</span>
+            <span class="btn-arrow">▶</span>
+          </button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="modal-card game-over">
+          <div class="modal-badge badge-danger">Crash!</div>
+          <h2 class="modal-title">Game Over</h2>
+          <div class="modal-stats">
+            <div class="stat-box">
+              <span class="stat-label">Final Score</span>
+              <span class="stat-val" id="game-over-score">0</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Time Survived</span>
+              <span class="stat-val" id="game-over-time">0:00</span>
+            </div>
+          </div>
+          <div id="new-high-score-badge" class="new-record-alert" style="display: none;">
+            🎉 Congratulations! New High Score!
+          </div>
+          <button class="btn btn-primary btn-restart">
+            <span>Play Again</span>
+            <span class="btn-arrow">🔄</span>
+          </button>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
-
   </body>
 </html>
